@@ -1,0 +1,23 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  body { max-width: 640px; margin: 40px auto; font: 14px/1.6 -apple-system, "Segoe UI", sans-serif; color: #1C1C28; }
+  label { display: block; margin: 14px 0 4px; font-weight: 600; }
+  input[type=text] { width: 100%; padding: 8px; font: 13px ui-monospace, Menlo, monospace; box-sizing: border-box; }
+  button { font: inherit; padding: 8px 14px; margin-top: 16px; }
+  p.muted { color: #666; font-size: 13px; }
+</style></head>
+<body>
+  <h1>Kovel Verifier settings</h1>
+  <p class="muted">The verifier never fetches expected hashes from kovel.io. It reads them from the public repository below, and checks that the manifest is also in the Sigstore transparency log. Change these only if Kovel publishes a new location and you have confirmed it out of band.</p>
+  <label for="repo">Attestation repository (owner/name on github.com)</label>
+  <input type="text" id="repo">
+  <label><input type="checkbox" id="rekor"> Also check the Sigstore transparency log (rekor.sigstore.dev)</label>
+  <label for="policy">Passphrase policy</label>
+  <select id="policy">
+    <option value="block">Refuse to release my passphrase unless the build is verified</option>
+    <option value="warn">Warn me and let me decide each time</option>
+  </select>
+  <br><button id="save">Save</button> <span id="saved" class="muted"></span>
+  <script src="options.js"></script>
+</body></html>
